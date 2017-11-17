@@ -1,0 +1,22 @@
+
+int retardo = 2000;
+int a ;
+void setup() {
+  // put your setup code here, to run once:
+ DDRB = 0b111110;
+ }
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  
+  cambiarEstadoLed(10);
+  delay(retardo);
+  
+}
+
+void cambiarEstadoLed(int num){
+  PORTB=0b111111;
+  
+//a=1<< (num-8);
+ 
+}
