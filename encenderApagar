@@ -1,0 +1,18 @@
+int retardo = 2000;
+int pinLed = 10;
+int estadoLed= 0;
+void setup() {
+  // put your setup code here, to run once:
+  DDRB = 0b111111;
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  cambiarEstadoLed();
+  delay(retardo);
+}
+
+void cambiarEstadoLed(){
+  estadoLed=~estadoLed;
+  digitalWrite(pinLed,estadoLed);
+}
