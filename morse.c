@@ -12,7 +12,8 @@ int pinMorse = 8;
 int pinEspacio = 7;
 
 void setup() {
-  //Configurar pines de salida
+  pinMode(pinMorse, OUTPUT);
+  pinMode(pinEspacio, OUTPUT);
 
   Serial.begin(9600);
 
@@ -34,11 +35,16 @@ void loop() {
     Serial.print(" ");
     if(ch_valor == 32){
       Serial.println("Espacio");
+      String secuenciaMorse(); //no estoy seguro
+      parpadeoEspacio();
       //Agegar funcion
     }
     else{
       ch_morse = morseLetras[ch_valor - 97];
       Serial.println(ch_morse);
+      String secuenciaMorse=ch_morse; //*
+      secuencia(secuenciaMorse); //*
+     
       //Agegar funcion
     }
   }
@@ -51,19 +57,44 @@ void secuencia(String secuenciaMorse){
   //parpadeoPuntoRaya()
   
   int largo = secuenciaMorse.length();
-
-
+  Serial.println(largo);
+  for(int i=1; i<largo; i++){
+    if(secuenciaMorse[i] == '.'){
+      char puntoRaya='.';
+      parpadeoPuntoRaya(puntoRaya);
+  }
+  else if(secuenciaMorse[i] == '-'){
+      char puntoRaya='-';
+      parpadeoPuntoRaya(puntoRaya);
+  }
+   
+   
+   
+  }
+	// parpadeoEspacio();
 }
 
 void parpadeoPuntoRaya(char puntoRaya){
-  //Completar código adecuadamente
+  if(puntoRaya == '.'){
+    digitalWrite(8, HIGH); 
+    delay(retardoPunto);
+    digitalWrite(8, LOW);
+  }
+  else{
+      digitalWrite(8,HIGH);
+      delay(retardoRaya);
+      digitalWrite(8, LOW);
+  }
+  
+     
+    
   
   
-  //Espera un tiempo equivalente a
-  //un punto para el siguiente punto/raya
-  delay(retardoPunto);
 }
 
 void parpadeoEspacio(){
+      digitalWrite(7, HIGH);
+      delay(retardoEspacio);
+      digitalWrite(7, LOW);
+     }
   //Completar código adecuadamente
-}
