@@ -35,15 +35,14 @@ void loop() {
     Serial.print(" ");
     if(ch_valor == 32){
       Serial.println("Espacio");
-      String secuenciaMorse(); //no estoy seguro
       parpadeoEspacio();
       //Agegar funcion
     }
     else{
       ch_morse = morseLetras[ch_valor - 97];
       Serial.println(ch_morse);
-      String secuenciaMorse=ch_morse; //*
-      secuencia(secuenciaMorse); //*
+      String secuenciaMorse=ch_morse; 
+      secuencia(secuenciaMorse); 
      
       //Agegar funcion
     }
@@ -62,16 +61,12 @@ void secuencia(String secuenciaMorse){
     if(secuenciaMorse[i] == '.'){
       char puntoRaya='.';
       parpadeoPuntoRaya(puntoRaya);
-  }
-  else if(secuenciaMorse[i] == '-'){
+    }
+    else if(secuenciaMorse[i] == '-'){
       char puntoRaya='-';
       parpadeoPuntoRaya(puntoRaya);
-  }
-   
-   
-   
-  }
-	// parpadeoEspacio();
+    }
+ }
 }
 
 void parpadeoPuntoRaya(char puntoRaya){
@@ -85,11 +80,6 @@ void parpadeoPuntoRaya(char puntoRaya){
       delay(retardoRaya);
       digitalWrite(8, LOW);
   }
-  
-     
-    
-  
-  
 }
 
 void parpadeoEspacio(){
